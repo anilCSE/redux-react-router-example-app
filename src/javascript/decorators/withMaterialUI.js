@@ -23,7 +23,7 @@ export default function withMaterialUI(ComposedComponent) {
     }
 
     render() {
-      let { context, ...other } = this.props; // eslint-disable-line no-unused-vars
+      const { context, ...other } = this.props;
       return <ComposedComponent {...other} />;
     }
   };
