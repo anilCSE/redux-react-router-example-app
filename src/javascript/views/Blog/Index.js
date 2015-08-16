@@ -1,13 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import AppBar from '../../containers/AppBar';
+import withAppBar from '../../decorators/withAppBar';
 import { FloatingActionButton } from 'material-ui';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import Post from './Post';
 import * as BlogActions from '../../actions/BlogActions';
 
-class BlogApp extends Component {
+@withAppBar
+class Blog extends Component {
   static propTypes = {
     blogposts: PropTypes.array.isRequired,
     users: PropTypes.array.isRequired,
@@ -36,7 +37,7 @@ class BlogApp extends Component {
     const styles = this.getStyles();
 
     return (
-        <AppBar>
+        <div>
           {blogposts.map((post, i) =>
                   <Post key={i}
                         post={post}
@@ -49,7 +50,7 @@ class BlogApp extends Component {
                                 }}>
             <ContentAdd />
           </FloatingActionButton>
-        </AppBar>
+        </div>
     );
   }
 }
@@ -57,4 +58,4 @@ class BlogApp extends Component {
 export default connect(state => ({
   blogposts: state.blogposts,
   users: state.users
-}))(BlogApp);
+}))(Blog);

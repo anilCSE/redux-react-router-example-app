@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import AppBar from '../../containers/AppBar';
+import withAppBar from '../../decorators/withAppBar';
 import { Paper, TextField, RaisedButton } from 'material-ui';
 import * as BlogActions from '../../actions/BlogActions';
 
+@withAppBar
 class Draft extends Component {
   static propTypes = {
     params: PropTypes.object.isRequired,
@@ -93,11 +94,11 @@ class Draft extends Component {
     );
 
     return (
-        <AppBar>
+        <div>
           <Paper style={styles.paper}>
             {form}
           </Paper>
-        </AppBar>
+        </div>
     );
   }
 }

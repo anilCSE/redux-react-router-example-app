@@ -2,8 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Paper, TextField, RaisedButton } from 'material-ui';
-import ActionAccountCicle
-from 'material-ui/lib/svg-icons/action/account-circle';
+import ActionAccountCicle from 'material-ui/lib/svg-icons/action/account-circle';
 import * as AuthActions from '../../actions/AuthActions';
 
 class Login extends Component {
@@ -49,17 +48,17 @@ class Login extends Component {
                        hintText='email'
                        floatingLabelText='email'
                        defaultValue='john.doe@example.com'
-                       onKeyDown={::this.submit} /><br/>
+                       onKeyDown={this.submit.bind(this)}/><br/>
             <TextField ref='password'
                        hintText='password'
                        floatingLabelText='password'
                        type='password'
                        defaultValue='qwertyuiop'
-                       onKeyDown={::this.submit} /><br />
+                       onKeyDown={this.submit.bind(this)}/><br />
             <RaisedButton style={styles.submit}
                           label='Submit'
                           primary={true}
-                          onTouchTap={::this.submit} />
+                          onTouchTap={this.submit.bind(this)}/>
           </Paper>
         </div>
     );
@@ -78,4 +77,4 @@ class Login extends Component {
   }
 }
 
-export default connect(state => ({ user: state.user }))(Login);
+export default connect(state => ({user: state.user}))(Login);
